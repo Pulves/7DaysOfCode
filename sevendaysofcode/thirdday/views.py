@@ -28,7 +28,11 @@ def get_characters(request):
         characters_translated = change_dict_keys(translated_keys, keys, characters)
 
         response = interate_characters(characters_translated)
-        return JsonResponse(response, safe=False)
+        context = {
+            'title': 'Personagesn Traduzidos',
+            'characters': response
+        }
+        return render(request, 'characters.html', context)
     
     else:
         return HttpResponseBadRequest("Método não suportado!")
