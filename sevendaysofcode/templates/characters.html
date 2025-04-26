@@ -1,23 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{title}}</title>
+    <title>Dados da API</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>{{title}}</h1>
-    <ul>
-    {%for character in characters%}
-        <li>
-            Nome: {{character.nome}}<br>
-            Afiliação: {{character.afiliacao}} <br>
-            Aliados: {{character.aliados}} <br>
-            Inimigos: {{character.inimigos}} <br> <br>
+    <div class="container mt-5">
+        <h1>Dados da API</h1>
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Afiliação</th>
+                    <th>Aliados</th>
+                    <th>Inimigos</th>
+                </tr>
+            </thead>
+            <tbody id="data-table-body">
+                {%for character in characters%}
+                    <tr>
+                        <td>{{character.nome}}</td>
+                        <td>{{character.afiliacao}}</td> 
+                        <td>{{character.aliados}}</td>
+                        <td>{{character.inimigos}}</td>
+                    </tr>
+       
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
-        </li>    
-    {% endfor %}
-    </ul>
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
