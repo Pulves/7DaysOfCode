@@ -1,8 +1,5 @@
-import json
-import asyncio
-from APIRequest import Request
-from Translator import translate_list
-
+#função lambda que retorna um dicionário da lista de chaves e valores 
+create_dict = lambda keys, values : dict(zip(keys, list(values)))
 
 #extrai as chaves do dicionário
 #a entrada é um dicionário
@@ -29,12 +26,12 @@ def change_dict_keys(new_keys:list, old_keys:list, list_content:list) -> list:
             keys_list = element_by_index(new_keys, index_list)#pega os elementos da lista baseado nas chaves
             
             new_dict_list.append(
-                    new_dict(keys_list, dictionary.values())
+                    create_dict(keys_list, dictionary.values())
                     )
             
         else:
             new_dict_list.append(
-                    new_dict(new_keys, dictionary.values())
+                    create_dict(new_keys, dictionary.values())
                     )
     
 
@@ -63,7 +60,8 @@ def index_keys(keys:list, dictionary:dict) -> list:
     return list_index
 
 
-if __name__ == '__main__':
+
+"""if __name__ == '__main__':
     baseURL = "https://last-airbender-api.fly.dev/"
     api_path = "api/v1/characters"
     method = "get"
@@ -77,9 +75,9 @@ if __name__ == '__main__':
     
     translated_keys = asyncio.run(translate_list(keys_list, 'pt'))
     
-    #função lambda que retorna um dicionário da lista de chaves e valores 
-    new_dict = lambda keys, values : dict(zip(keys, list(values)))
+    
     
     new_content = change_dict_keys(translated_keys, keys_list, content)
     print(json.dumps(new_content, indent=4))
 
+"""
